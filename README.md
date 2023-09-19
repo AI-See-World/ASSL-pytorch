@@ -17,12 +17,7 @@ You can install the required dependencies by running the following command:
 pip install -r requirements.txt
 ```
 ## Prepare the train data 
-
-- Download a subset of the Imagenet dataset, which contains 1.2 million images.
-- Perform high-confidence filtering on the dataset to obtain high-quality training data.   You can use a pre-trained Imagenet model to filter the dataset and retain only the images with high-confidence prediction results.
-- Select 122,186 images from the filtered data as the training data.   You can adjust the quantity as needed.
-- Ensure that the filtered images are saved in the specified folder.   Please note that the code requires the images to be in JPEG format.
-- If you have chosen a dataset in a different format, you will need to modify the data loading method in the "ssl_dataset.py" file accordingly.
+You can prepare the training data set as follows：https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/train_data.md
 
 ## How to Use to Train
 To train the model, follow the steps below:
