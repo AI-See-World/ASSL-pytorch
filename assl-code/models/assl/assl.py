@@ -76,7 +76,6 @@ class ASSL:
         From data_loader, it inference training data, computes losses, and update the networks.
         """
         ngpus_per_node = torch.cuda.device_count()
-        print("=============初始有标签数据的监督训练ing=============")
 
         self.train_model.train()
 
