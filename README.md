@@ -31,6 +31,10 @@ Run the following command to start the training:
 python train.py 
 ```
 
+## Resule
+![](https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png)
+![](https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png)
+
 ## Evaluate
 To evaluate the trained model, you can use the eval.py script.
 
