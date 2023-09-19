@@ -17,7 +17,7 @@ You can install the required dependencies by running the following command:
 pip install -r requirements.txt
 ```
 ## Prepare the train data 
-You can prepare the training data set as follows：https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/train_data.md
+You can prepare the training dataset as follows：https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/train_data.md
 
 ## How to Use to Train
 To train the model, follow the steps below:
