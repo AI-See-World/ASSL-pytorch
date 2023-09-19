@@ -32,8 +32,8 @@ python train.py
 ```
 
 ## Resule
-<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png" width="210px">
-<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png" width="210px">
+<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png" width="310px"><img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png" width="310px">
+
 
 
 ## Evaluate
