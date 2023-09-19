@@ -26,6 +26,7 @@ To train the model, follow the steps below:
 - Note: We currently only support Python 3+.
 - Modify the corresponding dataset location in ssl_dataset.py before training starts.
 - Download the dataset by following the instructions provided in the repository.
+- Before training the surrogate model, you must have a black-box model. In our experiment, we assume the black-box model to be a ResNet34 model trained on the CIFAR-10 dataset.
 
 Run the following command to start the training:
 ```
