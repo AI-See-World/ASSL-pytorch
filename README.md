@@ -57,7 +57,6 @@ git clone <repository_url>
 - Modify the dataset path: Before starting the training, please modify lines 254, 257, and 262 in the ssl_dataset.py file to match the location of your dataset on the server. This ensures that the training process can load the dataset correctly.
 - Prepare the black-box model: Before training the agent model, make sure you have prepared the black-box model. In this experiment, we assume that the black-box model is a ResNet34 model trained on the CIFAR-10 dataset. Please note that when saving the black-box model, save it in the form of a complete model + parameters. If only the model is saved, you will need to provide the network structure parameters when loading the black-box model to load it correctly. The code to load the black-box model is located at line 45 of the ssl_dataset.py file. Make sure to provide the correct network structure parameters when loading the black-box model.
 - Important hyperparameter settings: In the main function of the train.py file, you can set the following important hyperparameters to fit your server and training requirements:
-- 
 ```
 --save_dir : Specify the directory where the model will be saved. The default is ./saved_models.
 
