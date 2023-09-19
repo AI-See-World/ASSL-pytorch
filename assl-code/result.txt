@@ -1,0 +1,374 @@
+epoch = 1+9
+budget = 730*6+6000+2166*9
+res34---res34
+
+E:\GAO\PycharmProject\FixMatch-pytorch-main\venv\Scripts\python.exe E:/GAO/PycharmProject/5.31/5.19Fix/train.py
+E:/GAO/PycharmProject/5.31/5.19Fix/train.py:41: UserWarning: You have chosen to seed training. This will turn on the CUDNN deterministic setting, which can slow down your training considerably! You may see unexpected behavior when restarting from checkpoints.
+  warnings.warn('You have chosen to seed training. '
+E:/GAO/PycharmProject/5.31/5.19Fix/train.py:48: UserWarning: You have chosen a specific GPU. This will completely disable data parallelism.
+  warnings.warn('You have chosen a specific GPU. This will completely '
+[2022-10-17 09:41:21,522 WARNING] USE GPU: 0 for training
+depth in <models.nets.wrn.build_WideResNet object at 0x00000272BA557080> is overlapped by kwargs: 28 -> 34
+widen_factor in <models.nets.wrn.build_WideResNet object at 0x00000272BA557080> is overlapped by kwargs: 2 -> 1
+leaky_slope in <models.nets.wrn.build_WideResNet object at 0x00000272BA557080> is overlapped by kwargs: 0.0 -> 0.1
+bn_momentum in <models.nets.wrn.build_WideResNet object at 0x00000272BA557080> is overlapped by kwargs: 0.01 -> 0.0010000000000000009
+dropRate in <models.nets.wrn.build_WideResNet object at 0x00000272BA557080> is overlapped by kwargs: 0.0 -> 0.0
+[2022-10-17 09:41:21,691 INFO] Number of Trainable Params: 466714
+[2022-10-17 09:41:22,850 INFO] model_arch: <models.fixmatch.fixmatch备份.FixMatch object at 0x00000272BA557278>
+开始加载imagenet训练数据集.....
+Loading E:/GAO/PycharmProject/6.25/data/imagenet\train_data_batch_1.json
+[2022-10-17 09:41:22,976 INFO] Arguments: Namespace(T=0.5, amp=False, batch_size=64, bn_momentum=0.0010000000000000009, data_dir='./data', dataset='cifar10', depth=34, dist_backend='nccl', dist_url='tcp://127.0.0.1:10001', distributed=False, dropout=0.0, ema_m=0.999, epoch=10, eval_batch_size=1024, every_num_train_iter=7000, gpu=0, hard_label=True, leaky_slope=0.1, load_path=None, lr=0.03, momentum=0.9, multiprocessing_distributed=False, net='WideResNet', net_from_name=False, num_classes=10, num_eval_iter=1000, num_labels=1460, num_train_iter=70000, num_workers=0, overwrite=True, p_cutoff=0.95, rank=0, resume=False, save_dir='./saved_models', save_name='cifar10-40', seed=0, train_sampler='RandomSampler', ulb_loss_ratio=1.0, uratio=7, weight_decay=0.0005, widen_factor=1, world_size=1)
+<class 'numpy.ndarray'> (128116,)
+-----------初始数据加载完毕-----------
+origin_data.shape (4328, 32, 32, 3)
+train_data.shape (73667, 32, 32, 3)
+-----------训练数据加载完毕-----------
+lb_data=== 4328 <class 'numpy.ndarray'> (4328, 32, 32, 3)
+lb_targets=== 4328 <class 'numpy.ndarray'> (4328,)
+ulb_data=== 73667 <class 'numpy.ndarray'> (73667, 32, 32, 3)
+ulb_targets=== 73667 <class 'numpy.ndarray'> (73667,)
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (4328, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (73667, 32, 32, 3)
+-------------有标签数据进行10次增强ing------------
+-------------无标签数据进行增强ing------------
+开始加载imagenet测试数据集.....
+Loading E:/GAO/PycharmProject/6.25/data/imagenet\val_data.json
+--------------验证集总大小： (6000, 32, 32, 3)
+验证集： <class 'list'> (6000, 32, 32, 3) 6000
+-------------有标签数据进行增强ing------------
+Files already downloaded and verified
+-------------有标签数据进行增强ing------------
+............. 第 0 次迭代...............
+=============初始有标签数据的监督训练ing=============
+[2022-10-17 10:40:15,324 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 10:40:35,410 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 0.0 当前eval_model在验证集上的准确率 tensor(0.2913, device='cuda:0')
+[2022-10-17 10:46:14,193 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.6927, device='cuda:0'), 'train/total_loss': tensor(1.6927, device='cuda:0'), 'lr': 0.029994217214461945, 'train/prefecth_time': 1.9519999623298645e-06, 'train/run_time': 0.14812188720703126, 'eval/top-1-acc': tensor(0.2913, device='cuda:0'), 'train/top-1-acc': tensor(0.2655, device='cuda:0'), 'eval/loss': tensor(2.0281, device='cuda:0'), 'train/loss': tensor(1.9379, device='cuda:0')}, BEST_EVAL_ACC: 0.29133331775665283, at 1000 iters
+[2022-10-17 10:46:14,227 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+2000 次： 最好的模型准确率 tensor(0.2913, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.2920, device='cuda:0')
+[2022-10-17 10:51:55,194 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.4766, device='cuda:0'), 'train/total_loss': tensor(1.4766, device='cuda:0'), 'lr': 0.029976871087221687, 'train/prefecth_time': 1.5360000543296336e-06, 'train/run_time': 0.14854666137695313, 'eval/top-1-acc': tensor(0.2920, device='cuda:0'), 'train/top-1-acc': tensor(0.2955, device='cuda:0'), 'eval/loss': tensor(1.9230, device='cuda:0'), 'train/loss': tensor(1.8647, device='cuda:0')}, BEST_EVAL_ACC: 0.2919999957084656, at 2000 iters
+[2022-10-17 10:51:55,239 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 10:57:41,646 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.5052, device='cuda:0'), 'train/total_loss': tensor(1.5052, device='cuda:0'), 'lr': 0.029947968305541476, 'train/prefecth_time': 1.3760000001639128e-06, 'train/run_time': 0.14908787536621093, 'eval/top-1-acc': tensor(0.3395, device='cuda:0'), 'train/top-1-acc': tensor(0.3297, device='cuda:0'), 'eval/loss': tensor(1.8035, device='cuda:0'), 'train/loss': tensor(1.8415, device='cuda:0')}, BEST_EVAL_ACC: 0.3395000100135803, at 3000 iters
+3000 次： 最好的模型准确率 tensor(0.2920, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.3395, device='cuda:0')
+[2022-10-17 10:57:41,698 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+4000 次： 最好的模型准确率 tensor(0.3395, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4190, device='cuda:0')
+[2022-10-17 11:03:24,559 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.3637, device='cuda:0'), 'train/total_loss': tensor(1.3637, device='cuda:0'), 'lr': 0.029907520011993836, 'train/prefecth_time': 1.408000010997057e-06, 'train/run_time': 0.1482524108886719, 'eval/top-1-acc': tensor(0.4190, device='cuda:0'), 'train/top-1-acc': tensor(0.3673, device='cuda:0'), 'eval/loss': tensor(1.6189, device='cuda:0'), 'train/loss': tensor(1.7816, device='cuda:0')}, BEST_EVAL_ACC: 0.4189999997615814, at 4000 iters
+[2022-10-17 11:03:24,600 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+5000 次： 最好的模型准确率 tensor(0.4190, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4537, device='cuda:0')
+[2022-10-17 11:09:07,061 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.2336, device='cuda:0'), 'train/total_loss': tensor(1.2336, device='cuda:0'), 'lr': 0.029855541800165905, 'train/prefecth_time': 1.440000021830201e-06, 'train/run_time': 0.14786051940917969, 'eval/top-1-acc': tensor(0.4537, device='cuda:0'), 'train/top-1-acc': tensor(0.3448, device='cuda:0'), 'eval/loss': tensor(1.5330, device='cuda:0'), 'train/loss': tensor(1.9247, device='cuda:0')}, BEST_EVAL_ACC: 0.45366665720939636, at 5000 iters
+[2022-10-17 11:09:07,104 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+6000 次： 最好的模型准确率 tensor(0.4537, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4572, device='cuda:0')
+[2022-10-17 11:14:49,156 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(1.0580, device='cuda:0'), 'train/total_loss': tensor(1.0580, device='cuda:0'), 'lr': 0.02979205370864779, 'train/prefecth_time': 1.3760000001639128e-06, 'train/run_time': 0.14945945739746094, 'eval/top-1-acc': tensor(0.4572, device='cuda:0'), 'train/top-1-acc': tensor(0.3395, device='cuda:0'), 'eval/loss': tensor(1.5346, device='cuda:0'), 'train/loss': tensor(2.0323, device='cuda:0')}, BEST_EVAL_ACC: 0.4571666717529297, at 6000 iters
+[2022-10-17 11:14:49,209 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 11:20:31,438 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.9314, device='cuda:0'), 'train/total_loss': tensor(0.9314, device='cuda:0'), 'lr': 0.029717080213307316, 'train/prefecth_time': 1.408000010997057e-06, 'train/run_time': 0.14922691345214845, 'eval/top-1-acc': tensor(0.4637, device='cuda:0'), 'train/top-1-acc': tensor(0.3462, device='cuda:0'), 'eval/loss': tensor(1.5845, device='cuda:0'), 'train/loss': tensor(2.0585, device='cuda:0')}, BEST_EVAL_ACC: 0.4636666476726532, at 7000 iters
+7000 次： 最好的模型准确率 tensor(0.4572, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4637, device='cuda:0')
+[2022-10-17 11:20:31,478 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 11:20:31,521 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.6596, device='cuda:0'), 'train/top-1-acc': tensor(0.5643, device='cuda:0'), 'eval/loss': tensor(1.0722, device='cuda:0'), 'train/loss': tensor(1.3244, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 1152/1152 [00:24<00:00, 47.05it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (6494, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (71501, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+............. 第 1 次迭代...............
+-==============半监督训练===========
+[2022-10-17 11:20:59,143 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 11:20:59,181 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 11:20:59,217 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 11:20:59,217 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 11:20:59,217 INFO] Check Point Loading: it is LOADED
+[2022-10-17 11:21:00,630 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.4637, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4850, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3780, device='cuda:0')
+[2022-10-17 11:28:12,452 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6010, device='cuda:0'), 'train/unsup_loss': tensor(0.0806, device='cuda:0'), 'train/total_loss': tensor(0.6817, device='cuda:0'), 'train/mask_ratio': tensor(0.8839, device='cuda:0'), 'lr': 0.029630650217854132, 'train/prefecth_time': 0.2896573486328125, 'train/run_time': 0.17885519409179687, 'eval/top-1-acc': tensor(0.4850, device='cuda:0'), 'train/top-1-acc': tensor(0.3780, device='cuda:0'), 'eval/loss': tensor(1.4914, device='cuda:0'), 'train/loss': tensor(1.9909, device='cuda:0')}, BEST_EVAL_ACC: 0.48499998450279236, at 1000 iters
+[2022-10-17 11:28:12,503 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+2000 次： 最好的模型准确率 tensor(0.4850, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4955, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3788, device='cuda:0')
+[2022-10-17 11:35:27,846 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6308, device='cuda:0'), 'train/unsup_loss': tensor(0.0964, device='cuda:0'), 'train/total_loss': tensor(0.7271, device='cuda:0'), 'train/mask_ratio': tensor(0.8371, device='cuda:0'), 'lr': 0.02953279704269675, 'train/prefecth_time': 0.23492274475097658, 'train/run_time': 0.1784601287841797, 'eval/top-1-acc': tensor(0.4955, device='cuda:0'), 'train/top-1-acc': tensor(0.3788, device='cuda:0'), 'eval/loss': tensor(1.4945, device='cuda:0'), 'train/loss': tensor(2.1056, device='cuda:0')}, BEST_EVAL_ACC: 0.49549999833106995, at 2000 iters
+[2022-10-17 11:35:27,892 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+3000 次： 最好的模型准确率 tensor(0.4955, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5032, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3790, device='cuda:0')
+[2022-10-17 11:42:42,250 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6682, device='cuda:0'), 'train/unsup_loss': tensor(0.1851, device='cuda:0'), 'train/total_loss': tensor(0.8533, device='cuda:0'), 'train/mask_ratio': tensor(0.7946, device='cuda:0'), 'lr': 0.02942355841209691, 'train/prefecth_time': 0.2327736358642578, 'train/run_time': 0.17940480041503906, 'eval/top-1-acc': tensor(0.5032, device='cuda:0'), 'train/top-1-acc': tensor(0.3790, device='cuda:0'), 'eval/loss': tensor(1.5573, device='cuda:0'), 'train/loss': tensor(2.1732, device='cuda:0')}, BEST_EVAL_ACC: 0.503166675567627, at 3000 iters
+[2022-10-17 11:42:42,326 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+4000 次： 最好的模型准确率 tensor(0.5032, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5007, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3655, device='cuda:0')
+[2022-10-17 11:49:55,907 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3697, device='cuda:0'), 'train/unsup_loss': tensor(0.2628, device='cuda:0'), 'train/total_loss': tensor(0.6325, device='cuda:0'), 'train/mask_ratio': tensor(0.7321, device='cuda:0'), 'lr': 0.02930297643962617, 'train/prefecth_time': 0.24251026916503907, 'train/run_time': 0.17863372802734376, 'eval/top-1-acc': tensor(0.5007, device='cuda:0'), 'train/top-1-acc': tensor(0.3655, device='cuda:0'), 'eval/loss': tensor(1.6415, device='cuda:0'), 'train/loss': tensor(2.3405, device='cuda:0')}, BEST_EVAL_ACC: 0.503166675567627, at 3000 iters
+[2022-10-17 11:57:09,867 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4752, device='cuda:0'), 'train/unsup_loss': tensor(0.2588, device='cuda:0'), 'train/total_loss': tensor(0.7340, device='cuda:0'), 'train/mask_ratio': tensor(0.7321, device='cuda:0'), 'lr': 0.029171097611930295, 'train/prefecth_time': 0.23982691955566407, 'train/run_time': 0.17932931518554687, 'eval/top-1-acc': tensor(0.4985, device='cuda:0'), 'train/top-1-acc': tensor(0.3662, device='cuda:0'), 'eval/loss': tensor(1.7298, device='cuda:0'), 'train/loss': tensor(2.4190, device='cuda:0')}, BEST_EVAL_ACC: 0.503166675567627, at 3000 iters
+5000 次： 最好的模型准确率 tensor(0.5032, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.4985, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3662, device='cuda:0')
+6000 次： 最好的模型准确率 tensor(0.5032, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5008, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3785, device='cuda:0')
+[2022-10-17 12:04:24,239 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3649, device='cuda:0'), 'train/unsup_loss': tensor(0.3116, device='cuda:0'), 'train/total_loss': tensor(0.6765, device='cuda:0'), 'train/mask_ratio': tensor(0.6853, device='cuda:0'), 'lr': 0.02902797277080779, 'train/prefecth_time': 0.24023843383789062, 'train/run_time': 0.17803334045410157, 'eval/top-1-acc': tensor(0.5008, device='cuda:0'), 'train/top-1-acc': tensor(0.3785, device='cuda:0'), 'eval/loss': tensor(1.7728, device='cuda:0'), 'train/loss': tensor(2.4467, device='cuda:0')}, BEST_EVAL_ACC: 0.503166675567627, at 3000 iters
+7000 次： 最好的模型准确率 tensor(0.5032, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5033, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3967, device='cuda:0')
+[2022-10-17 12:11:38,265 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2434, device='cuda:0'), 'train/unsup_loss': tensor(0.3184, device='cuda:0'), 'train/total_loss': tensor(0.5618, device='cuda:0'), 'train/mask_ratio': tensor(0.6451, device='cuda:0'), 'lr': 0.028873657093609416, 'train/prefecth_time': 0.24547503662109374, 'train/run_time': 0.17789881896972656, 'eval/top-1-acc': tensor(0.5033, device='cuda:0'), 'train/top-1-acc': tensor(0.3967, device='cuda:0'), 'eval/loss': tensor(1.8206, device='cuda:0'), 'train/loss': tensor(2.4057, device='cuda:0')}, BEST_EVAL_ACC: 0.503333330154419, at 7000 iters
+[2022-10-17 12:11:38,315 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 12:11:38,619 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7055, device='cuda:0'), 'train/top-1-acc': tensor(0.5772, device='cuda:0'), 'eval/loss': tensor(1.1476, device='cuda:0'), 'train/loss': tensor(1.5444, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 1118/1118 [00:23<00:00, 47.21it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (8660, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (69335, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+............. 第 2 次迭代...............
+-==============半监督训练===========
+[2022-10-17 12:12:05,159 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 12:12:05,196 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 12:12:05,199 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 12:12:05,199 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 12:12:05,199 INFO] Check Point Loading: it is LOADED
+[2022-10-17 12:12:05,679 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.5033, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5170, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3865, device='cuda:0')
+[2022-10-17 12:19:18,287 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4176, device='cuda:0'), 'train/unsup_loss': tensor(0.2184, device='cuda:0'), 'train/total_loss': tensor(0.6360, device='cuda:0'), 'train/mask_ratio': tensor(0.7634, device='cuda:0'), 'lr': 0.028708210071966264, 'train/prefecth_time': 0.23035795593261718, 'train/run_time': 0.17881971740722657, 'eval/top-1-acc': tensor(0.5170, device='cuda:0'), 'train/top-1-acc': tensor(0.3865, device='cuda:0'), 'eval/loss': tensor(1.6500, device='cuda:0'), 'train/loss': tensor(2.1378, device='cuda:0')}, BEST_EVAL_ACC: 0.5170000195503235, at 1000 iters
+[2022-10-17 12:19:18,338 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 12:26:32,311 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6560, device='cuda:0'), 'train/unsup_loss': tensor(0.2242, device='cuda:0'), 'train/total_loss': tensor(0.8802, device='cuda:0'), 'train/mask_ratio': tensor(0.7612, device='cuda:0'), 'lr': 0.028531695488854605, 'train/prefecth_time': 0.24965682983398438, 'train/run_time': 0.17841728210449218, 'eval/top-1-acc': tensor(0.5185, device='cuda:0'), 'train/top-1-acc': tensor(0.3840, device='cuda:0'), 'eval/loss': tensor(1.6429, device='cuda:0'), 'train/loss': tensor(2.1993, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+2000 次： 最好的模型准确率 tensor(0.5170, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5185, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3840, device='cuda:0')
+[2022-10-17 12:26:32,355 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+3000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5165, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3875, device='cuda:0')
+[2022-10-17 12:33:46,969 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3799, device='cuda:0'), 'train/unsup_loss': tensor(0.1808, device='cuda:0'), 'train/total_loss': tensor(0.5607, device='cuda:0'), 'train/mask_ratio': tensor(0.7299, device='cuda:0'), 'lr': 0.02834418139400634, 'train/prefecth_time': 0.24535670471191406, 'train/run_time': 0.1783508758544922, 'eval/top-1-acc': tensor(0.5165, device='cuda:0'), 'train/top-1-acc': tensor(0.3875, device='cuda:0'), 'eval/loss': tensor(1.6595, device='cuda:0'), 'train/loss': tensor(2.3166, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+4000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5150, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4002, device='cuda:0')
+[2022-10-17 12:41:00,941 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5009, device='cuda:0'), 'train/unsup_loss': tensor(0.2824, device='cuda:0'), 'train/total_loss': tensor(0.7833, device='cuda:0'), 'train/mask_ratio': tensor(0.7031, device='cuda:0'), 'lr': 0.028145740077674522, 'train/prefecth_time': 0.24219407653808595, 'train/run_time': 0.17874610900878907, 'eval/top-1-acc': tensor(0.5150, device='cuda:0'), 'train/top-1-acc': tensor(0.4002, device='cuda:0'), 'eval/loss': tensor(1.6944, device='cuda:0'), 'train/loss': tensor(2.2198, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+5000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5172, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3933, device='cuda:0')
+[2022-10-17 12:48:15,060 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4762, device='cuda:0'), 'train/unsup_loss': tensor(0.2373, device='cuda:0'), 'train/total_loss': tensor(0.7135, device='cuda:0'), 'train/mask_ratio': tensor(0.6987, device='cuda:0'), 'lr': 0.027936448042764107, 'train/prefecth_time': 0.23114837646484376, 'train/run_time': 0.17856565856933593, 'eval/top-1-acc': tensor(0.5172, device='cuda:0'), 'train/top-1-acc': tensor(0.3933, device='cuda:0'), 'eval/loss': tensor(1.7200, device='cuda:0'), 'train/loss': tensor(2.2981, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+6000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5157, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3880, device='cuda:0')
+[2022-10-17 12:55:28,810 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3792, device='cuda:0'), 'train/unsup_loss': tensor(0.2699, device='cuda:0'), 'train/total_loss': tensor(0.6491, device='cuda:0'), 'train/mask_ratio': tensor(0.6652, device='cuda:0'), 'lr': 0.0277163859753386, 'train/prefecth_time': 0.2367109375, 'train/run_time': 0.17944496154785156, 'eval/top-1-acc': tensor(0.5157, device='cuda:0'), 'train/top-1-acc': tensor(0.3880, device='cuda:0'), 'eval/loss': tensor(1.7369, device='cuda:0'), 'train/loss': tensor(2.3733, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+7000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5158, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3915, device='cuda:0')
+[2022-10-17 13:02:41,827 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3270, device='cuda:0'), 'train/unsup_loss': tensor(0.2566, device='cuda:0'), 'train/total_loss': tensor(0.5836, device='cuda:0'), 'train/mask_ratio': tensor(0.6652, device='cuda:0'), 'lr': 0.027485638713514077, 'train/prefecth_time': 0.2466986541748047, 'train/run_time': 0.17877253723144532, 'eval/top-1-acc': tensor(0.5158, device='cuda:0'), 'train/top-1-acc': tensor(0.3915, device='cuda:0'), 'eval/loss': tensor(1.7643, device='cuda:0'), 'train/loss': tensor(2.3695, device='cuda:0')}, BEST_EVAL_ACC: 0.5184999704360962, at 2000 iters
+[2022-10-17 13:02:42,124 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7274, device='cuda:0'), 'train/top-1-acc': tensor(0.5864, device='cuda:0'), 'eval/loss': tensor(1.0628, device='cuda:0'), 'train/loss': tensor(1.4650, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 1084/1084 [00:22<00:00, 47.27it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (10826, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (67169, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+[2022-10-17 13:03:07,898 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+............. 第 3 次迭代...............
+-==============半监督训练===========
+[2022-10-17 13:03:07,935 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 13:03:07,939 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 13:03:07,939 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 13:03:07,939 INFO] Check Point Loading: it is LOADED
+[2022-10-17 13:03:08,390 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.5185, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5232, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4030, device='cuda:0')
+[2022-10-17 13:10:22,062 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4247, device='cuda:0'), 'train/unsup_loss': tensor(0.2508, device='cuda:0'), 'train/total_loss': tensor(0.6756, device='cuda:0'), 'train/mask_ratio': tensor(0.7210, device='cuda:0'), 'lr': 0.027244295214752436, 'train/prefecth_time': 0.2837118225097656, 'train/run_time': 0.17814314270019532, 'eval/top-1-acc': tensor(0.5232, device='cuda:0'), 'train/top-1-acc': tensor(0.4030, device='cuda:0'), 'eval/loss': tensor(1.6310, device='cuda:0'), 'train/loss': tensor(2.2012, device='cuda:0')}, BEST_EVAL_ACC: 0.5231666564941406, at 1000 iters
+[2022-10-17 13:10:22,112 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+2000 次： 最好的模型准确率 tensor(0.5232, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5263, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3843, device='cuda:0')
+[2022-10-17 13:17:35,929 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5694, device='cuda:0'), 'train/unsup_loss': tensor(0.1887, device='cuda:0'), 'train/total_loss': tensor(0.7581, device='cuda:0'), 'train/mask_ratio': tensor(0.7054, device='cuda:0'), 'lr': 0.026992448521566643, 'train/prefecth_time': 0.23630519104003905, 'train/run_time': 0.17836575317382813, 'eval/top-1-acc': tensor(0.5263, device='cuda:0'), 'train/top-1-acc': tensor(0.3843, device='cuda:0'), 'eval/loss': tensor(1.6185, device='cuda:0'), 'train/loss': tensor(2.2694, device='cuda:0')}, BEST_EVAL_ACC: 0.5263333320617676, at 2000 iters
+[2022-10-17 13:17:35,973 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 13:24:50,459 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.7525, device='cuda:0'), 'train/unsup_loss': tensor(0.2314, device='cuda:0'), 'train/total_loss': tensor(0.9839, device='cuda:0'), 'train/mask_ratio': tensor(0.7366, device='cuda:0'), 'lr': 0.026730195725651038, 'train/prefecth_time': 0.2464677734375, 'train/run_time': 0.17897158813476563, 'eval/top-1-acc': tensor(0.5223, device='cuda:0'), 'train/top-1-acc': tensor(0.3803, device='cuda:0'), 'eval/loss': tensor(1.6198, device='cuda:0'), 'train/loss': tensor(2.2673, device='cuda:0')}, BEST_EVAL_ACC: 0.5263333320617676, at 2000 iters
+3000 次： 最好的模型准确率 tensor(0.5263, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5223, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3803, device='cuda:0')
+4000 次： 最好的模型准确率 tensor(0.5263, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5220, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3793, device='cuda:0')
+[2022-10-17 13:32:04,192 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5284, device='cuda:0'), 'train/unsup_loss': tensor(0.2129, device='cuda:0'), 'train/total_loss': tensor(0.7413, device='cuda:0'), 'train/mask_ratio': tensor(0.7545, device='cuda:0'), 'lr': 0.02645763793045065, 'train/prefecth_time': 0.23224992370605468, 'train/run_time': 0.17908303833007813, 'eval/top-1-acc': tensor(0.5220, device='cuda:0'), 'train/top-1-acc': tensor(0.3793, device='cuda:0'), 'eval/loss': tensor(1.6231, device='cuda:0'), 'train/loss': tensor(2.3492, device='cuda:0')}, BEST_EVAL_ACC: 0.5263333320617676, at 2000 iters
+5000 次： 最好的模型准确率 tensor(0.5263, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5305, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4048, device='cuda:0')
+[2022-10-17 13:39:17,770 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5939, device='cuda:0'), 'train/unsup_loss': tensor(0.2460, device='cuda:0'), 'train/total_loss': tensor(0.8398, device='cuda:0'), 'train/mask_ratio': tensor(0.7031, device='cuda:0'), 'lr': 0.026174880212183914, 'train/prefecth_time': 0.2531514892578125, 'train/run_time': 0.17863385009765625, 'eval/top-1-acc': tensor(0.5305, device='cuda:0'), 'train/top-1-acc': tensor(0.4048, device='cuda:0'), 'eval/loss': tensor(1.6544, device='cuda:0'), 'train/loss': tensor(2.2238, device='cuda:0')}, BEST_EVAL_ACC: 0.5304999947547913, at 5000 iters
+[2022-10-17 13:39:17,821 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 13:46:31,967 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4013, device='cuda:0'), 'train/unsup_loss': tensor(0.2683, device='cuda:0'), 'train/total_loss': tensor(0.6696, device='cuda:0'), 'train/mask_ratio': tensor(0.6696, device='cuda:0'), 'lr': 0.025882031579333754, 'train/prefecth_time': 0.2555535430908203, 'train/run_time': 0.17904595947265625, 'eval/top-1-acc': tensor(0.5283, device='cuda:0'), 'train/top-1-acc': tensor(0.3965, device='cuda:0'), 'eval/loss': tensor(1.6653, device='cuda:0'), 'train/loss': tensor(2.2609, device='cuda:0')}, BEST_EVAL_ACC: 0.5304999947547913, at 5000 iters
+6000 次： 最好的模型准确率 tensor(0.5305, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5283, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.3965, device='cuda:0')
+7000 次： 最好的模型准确率 tensor(0.5305, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5297, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4015, device='cuda:0')
+[2022-10-17 13:53:46,146 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4601, device='cuda:0'), 'train/unsup_loss': tensor(0.2954, device='cuda:0'), 'train/total_loss': tensor(0.7555, device='cuda:0'), 'train/mask_ratio': tensor(0.6696, device='cuda:0'), 'lr': 0.025579204930622768, 'train/prefecth_time': 0.23582073974609374, 'train/run_time': 0.1796920623779297, 'eval/top-1-acc': tensor(0.5297, device='cuda:0'), 'train/top-1-acc': tensor(0.4015, device='cuda:0'), 'eval/loss': tensor(1.6834, device='cuda:0'), 'train/loss': tensor(2.2492, device='cuda:0')}, BEST_EVAL_ACC: 0.5304999947547913, at 5000 iters
+[2022-10-17 13:53:46,463 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7460, device='cuda:0'), 'train/top-1-acc': tensor(0.6228, device='cuda:0'), 'eval/loss': tensor(0.9429, device='cuda:0'), 'train/loss': tensor(1.3116, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 1050/1050 [00:22<00:00, 47.27it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (12992, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (65003, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+[2022-10-17 13:54:11,581 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+............. 第 4 次迭代...............
+-==============半监督训练===========
+[2022-10-17 13:54:11,618 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 13:54:11,621 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 13:54:11,622 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 13:54:11,622 INFO] Check Point Loading: it is LOADED
+[2022-10-17 13:54:12,071 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 14:01:25,327 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5048, device='cuda:0'), 'train/unsup_loss': tensor(0.1645, device='cuda:0'), 'train/total_loss': tensor(0.6693, device='cuda:0'), 'train/mask_ratio': tensor(0.7656, device='cuda:0'), 'lr': 0.025266517011488594, 'train/prefecth_time': 0.2451224365234375, 'train/run_time': 0.17783151245117187, 'eval/top-1-acc': tensor(0.5278, device='cuda:0'), 'train/top-1-acc': tensor(0.4272, device='cuda:0'), 'eval/loss': tensor(1.5955, device='cuda:0'), 'train/loss': tensor(1.9876, device='cuda:0')}, BEST_EVAL_ACC: 0.5304999947547913, at 1 iters
+1000 次： 最好的模型准确率 tensor(0.5305, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5278, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4272, device='cuda:0')
+2000 次： 最好的模型准确率 tensor(0.5305, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5343, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4148, device='cuda:0')
+[2022-10-17 14:08:40,817 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5791, device='cuda:0'), 'train/unsup_loss': tensor(0.2920, device='cuda:0'), 'train/total_loss': tensor(0.8711, device='cuda:0'), 'train/mask_ratio': tensor(0.6830, device='cuda:0'), 'lr': 0.024944088369076356, 'train/prefecth_time': 0.23945896911621095, 'train/run_time': 0.17875926208496093, 'eval/top-1-acc': tensor(0.5343, device='cuda:0'), 'train/top-1-acc': tensor(0.4148, device='cuda:0'), 'eval/loss': tensor(1.5631, device='cuda:0'), 'train/loss': tensor(2.0611, device='cuda:0')}, BEST_EVAL_ACC: 0.534333348274231, at 2000 iters
+[2022-10-17 14:08:40,863 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+3000 次： 最好的模型准确率 tensor(0.5343, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5337, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4127, device='cuda:0')
+[2022-10-17 14:15:53,261 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4746, device='cuda:0'), 'train/unsup_loss': tensor(0.3163, device='cuda:0'), 'train/total_loss': tensor(0.7909, device='cuda:0'), 'train/mask_ratio': tensor(0.7344, device='cuda:0'), 'lr': 0.024612043305765406, 'train/prefecth_time': 0.22158912658691407, 'train/run_time': 0.17863360595703126, 'eval/top-1-acc': tensor(0.5337, device='cuda:0'), 'train/top-1-acc': tensor(0.4127, device='cuda:0'), 'eval/loss': tensor(1.5850, device='cuda:0'), 'train/loss': tensor(2.1519, device='cuda:0')}, BEST_EVAL_ACC: 0.534333348274231, at 2000 iters
+[2022-10-17 14:23:05,935 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4122, device='cuda:0'), 'train/unsup_loss': tensor(0.3194, device='cuda:0'), 'train/total_loss': tensor(0.7316, device='cuda:0'), 'train/mask_ratio': tensor(0.6674, device='cuda:0'), 'lr': 0.024270509831248423, 'train/prefecth_time': 0.2394736328125, 'train/run_time': 0.1786359100341797, 'eval/top-1-acc': tensor(0.5305, device='cuda:0'), 'train/top-1-acc': tensor(0.4000, device='cuda:0'), 'eval/loss': tensor(1.5939, device='cuda:0'), 'train/loss': tensor(2.2142, device='cuda:0')}, BEST_EVAL_ACC: 0.534333348274231, at 2000 iters
+4000 次： 最好的模型准确率 tensor(0.5343, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5305, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4000, device='cuda:0')
+5000 次： 最好的模型准确率 tensor(0.5343, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5317, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4148, device='cuda:0')
+[2022-10-17 14:30:18,849 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5828, device='cuda:0'), 'train/unsup_loss': tensor(0.2409, device='cuda:0'), 'train/total_loss': tensor(0.8237, device='cuda:0'), 'train/mask_ratio': tensor(0.6942, device='cuda:0'), 'lr': 0.023919619613181214, 'train/prefecth_time': 0.2398527374267578, 'train/run_time': 0.17861680603027344, 'eval/top-1-acc': tensor(0.5317, device='cuda:0'), 'train/top-1-acc': tensor(0.4148, device='cuda:0'), 'eval/loss': tensor(1.5971, device='cuda:0'), 'train/loss': tensor(2.1394, device='cuda:0')}, BEST_EVAL_ACC: 0.534333348274231, at 2000 iters
+[2022-10-17 14:37:30,866 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4150, device='cuda:0'), 'train/unsup_loss': tensor(0.2368, device='cuda:0'), 'train/total_loss': tensor(0.6518, device='cuda:0'), 'train/mask_ratio': tensor(0.7143, device='cuda:0'), 'lr': 0.02355950792642235, 'train/prefecth_time': 0.25389039611816405, 'train/run_time': 0.17872134399414064, 'eval/top-1-acc': tensor(0.5327, device='cuda:0'), 'train/top-1-acc': tensor(0.4212, device='cuda:0'), 'eval/loss': tensor(1.6129, device='cuda:0'), 'train/loss': tensor(2.1066, device='cuda:0')}, BEST_EVAL_ACC: 0.534333348274231, at 2000 iters
+6000 次： 最好的模型准确率 tensor(0.5343, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5327, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4212, device='cuda:0')
+[2022-10-17 14:44:47,437 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4858, device='cuda:0'), 'train/unsup_loss': tensor(0.2552, device='cuda:0'), 'train/total_loss': tensor(0.7410, device='cuda:0'), 'train/mask_ratio': tensor(0.6853, device='cuda:0'), 'lr': 0.02319031360088211, 'train/prefecth_time': 0.22921945190429688, 'train/run_time': 0.17839337158203125, 'eval/top-1-acc': tensor(0.5365, device='cuda:0'), 'train/top-1-acc': tensor(0.4155, device='cuda:0'), 'eval/loss': tensor(1.6297, device='cuda:0'), 'train/loss': tensor(2.2338, device='cuda:0')}, BEST_EVAL_ACC: 0.5364999771118164, at 7000 iters
+7000 次： 最好的模型准确率 tensor(0.5343, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5365, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4155, device='cuda:0')
+[2022-10-17 14:44:47,485 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 14:44:47,785 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7602, device='cuda:0'), 'train/top-1-acc': tensor(0.6314, device='cuda:0'), 'eval/loss': tensor(0.8663, device='cuda:0'), 'train/loss': tensor(1.2483, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 1016/1016 [00:21<00:00, 47.43it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (15158, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (62837, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+[2022-10-17 14:45:12,068 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+............. 第 5 次迭代...............
+-==============半监督训练===========
+[2022-10-17 14:45:12,106 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 14:45:12,110 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 14:45:12,110 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 14:45:12,110 INFO] Check Point Loading: it is LOADED
+[2022-10-17 14:45:12,584 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 14:52:24,976 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6845, device='cuda:0'), 'train/unsup_loss': tensor(0.2746, device='cuda:0'), 'train/total_loss': tensor(0.9591, device='cuda:0'), 'train/mask_ratio': tensor(0.6942, device='cuda:0'), 'lr': 0.022812178968000932, 'train/prefecth_time': 0.221863525390625, 'train/run_time': 0.1783810272216797, 'eval/top-1-acc': tensor(0.5405, device='cuda:0'), 'train/top-1-acc': tensor(0.4400, device='cuda:0'), 'eval/loss': tensor(1.5628, device='cuda:0'), 'train/loss': tensor(2.0033, device='cuda:0')}, BEST_EVAL_ACC: 0.5404999852180481, at 1000 iters
+1000 次： 最好的模型准确率 tensor(0.5365, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5405, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4400, device='cuda:0')
+[2022-10-17 14:52:25,019 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+2000 次： 最好的模型准确率 tensor(0.5405, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5385, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4185, device='cuda:0')
+[2022-10-17 14:59:41,557 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4899, device='cuda:0'), 'train/unsup_loss': tensor(0.1877, device='cuda:0'), 'train/total_loss': tensor(0.6776, device='cuda:0'), 'train/mask_ratio': tensor(0.7589, device='cuda:0'), 'lr': 0.022425249805877904, 'train/prefecth_time': 0.22946054077148437, 'train/run_time': 0.17832467651367187, 'eval/top-1-acc': tensor(0.5385, device='cuda:0'), 'train/top-1-acc': tensor(0.4185, device='cuda:0'), 'eval/loss': tensor(1.5665, device='cuda:0'), 'train/loss': tensor(2.0169, device='cuda:0')}, BEST_EVAL_ACC: 0.5404999852180481, at 1000 iters
+3000 次： 最好的模型准确率 tensor(0.5405, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5425, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4175, device='cuda:0')
+[2022-10-17 15:07:06,751 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4457, device='cuda:0'), 'train/unsup_loss': tensor(0.2644, device='cuda:0'), 'train/total_loss': tensor(0.7101, device='cuda:0'), 'train/mask_ratio': tensor(0.7188, device='cuda:0'), 'lr': 0.022029675283070566, 'train/prefecth_time': 0.23576296997070312, 'train/run_time': 0.1789683532714844, 'eval/top-1-acc': tensor(0.5425, device='cuda:0'), 'train/top-1-acc': tensor(0.4175, device='cuda:0'), 'eval/loss': tensor(1.5778, device='cuda:0'), 'train/loss': tensor(2.0809, device='cuda:0')}, BEST_EVAL_ACC: 0.5425000190734863, at 3000 iters
+[2022-10-17 15:07:06,795 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+4000 次： 最好的模型准确率 tensor(0.5425, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5393, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4227, device='cuda:0')
+[2022-10-17 15:14:25,447 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5292, device='cuda:0'), 'train/unsup_loss': tensor(0.2247, device='cuda:0'), 'train/total_loss': tensor(0.7539, device='cuda:0'), 'train/mask_ratio': tensor(0.7098, device='cuda:0'), 'lr': 0.021625607901087564, 'train/prefecth_time': 0.23791976928710937, 'train/run_time': 0.17939453125, 'eval/top-1-acc': tensor(0.5393, device='cuda:0'), 'train/top-1-acc': tensor(0.4227, device='cuda:0'), 'eval/loss': tensor(1.5767, device='cuda:0'), 'train/loss': tensor(2.1035, device='cuda:0')}, BEST_EVAL_ACC: 0.5425000190734863, at 3000 iters
+5000 次： 最好的模型准确率 tensor(0.5425, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5418, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4273, device='cuda:0')
+[2022-10-17 15:21:37,805 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4854, device='cuda:0'), 'train/unsup_loss': tensor(0.2843, device='cuda:0'), 'train/total_loss': tensor(0.7697, device='cuda:0'), 'train/mask_ratio': tensor(0.6897, device='cuda:0'), 'lr': 0.021213203435596427, 'train/prefecth_time': 0.22216680908203126, 'train/run_time': 0.17878434753417968, 'eval/top-1-acc': tensor(0.5418, device='cuda:0'), 'train/top-1-acc': tensor(0.4273, device='cuda:0'), 'eval/loss': tensor(1.5559, device='cuda:0'), 'train/loss': tensor(2.1060, device='cuda:0')}, BEST_EVAL_ACC: 0.5425000190734863, at 3000 iters
+6000 次： 最好的模型准确率 tensor(0.5425, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5398, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4272, device='cuda:0')
+[2022-10-17 15:28:49,009 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6694, device='cuda:0'), 'train/unsup_loss': tensor(0.2540, device='cuda:0'), 'train/total_loss': tensor(0.9234, device='cuda:0'), 'train/mask_ratio': tensor(0.6808, device='cuda:0'), 'lr': 0.020792620876369076, 'train/prefecth_time': 0.22834880065917967, 'train/run_time': 0.17930656433105469, 'eval/top-1-acc': tensor(0.5398, device='cuda:0'), 'train/top-1-acc': tensor(0.4272, device='cuda:0'), 'eval/loss': tensor(1.5670, device='cuda:0'), 'train/loss': tensor(2.0598, device='cuda:0')}, BEST_EVAL_ACC: 0.5425000190734863, at 3000 iters
+7000 次： 最好的模型准确率 tensor(0.5425, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5410, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4245, device='cuda:0')
+[2022-10-17 15:35:59,606 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2992, device='cuda:0'), 'train/unsup_loss': tensor(0.2737, device='cuda:0'), 'train/total_loss': tensor(0.5728, device='cuda:0'), 'train/mask_ratio': tensor(0.6964, device='cuda:0'), 'lr': 0.020364022365988253, 'train/prefecth_time': 0.23488645935058594, 'train/run_time': 0.17929493713378905, 'eval/top-1-acc': tensor(0.5410, device='cuda:0'), 'train/top-1-acc': tensor(0.4245, device='cuda:0'), 'eval/loss': tensor(1.5819, device='cuda:0'), 'train/loss': tensor(2.0801, device='cuda:0')}, BEST_EVAL_ACC: 0.5425000190734863, at 3000 iters
+[2022-10-17 15:35:59,895 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7756, device='cuda:0'), 'train/top-1-acc': tensor(0.6432, device='cuda:0'), 'eval/loss': tensor(0.8229, device='cuda:0'), 'train/loss': tensor(1.1891, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 982/982 [00:20<00:00, 47.39it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (17324, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (60671, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+[2022-10-17 15:36:23,517 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+............. 第 6 次迭代...............
+-==============半监督训练===========
+[2022-10-17 15:36:23,553 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 15:36:23,557 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 15:36:23,557 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 15:36:23,557 INFO] Check Point Loading: it is LOADED
+[2022-10-17 15:36:24,019 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.5425, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5470, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4235, device='cuda:0')
+[2022-10-17 15:43:34,867 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5914, device='cuda:0'), 'train/unsup_loss': tensor(0.2043, device='cuda:0'), 'train/total_loss': tensor(0.7957, device='cuda:0'), 'train/mask_ratio': tensor(0.7188, device='cuda:0'), 'lr': 0.01992757313733845, 'train/prefecth_time': 0.23811836242675782, 'train/run_time': 0.17957122802734374, 'eval/top-1-acc': tensor(0.5470, device='cuda:0'), 'train/top-1-acc': tensor(0.4235, device='cuda:0'), 'eval/loss': tensor(1.5207, device='cuda:0'), 'train/loss': tensor(2.0075, device='cuda:0')}, BEST_EVAL_ACC: 0.546999990940094, at 1000 iters
+[2022-10-17 15:43:34,915 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+2000 次： 最好的模型准确率 tensor(0.5470, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5517, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4052, device='cuda:0')
+[2022-10-17 15:50:49,374 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4180, device='cuda:0'), 'train/unsup_loss': tensor(0.1972, device='cuda:0'), 'train/total_loss': tensor(0.6152, device='cuda:0'), 'train/mask_ratio': tensor(0.7455, device='cuda:0'), 'lr': 0.01948344144990551, 'train/prefecth_time': 0.23940576171875, 'train/run_time': 0.17933270263671874, 'eval/top-1-acc': tensor(0.5517, device='cuda:0'), 'train/top-1-acc': tensor(0.4052, device='cuda:0'), 'eval/loss': tensor(1.4929, device='cuda:0'), 'train/loss': tensor(2.0981, device='cuda:0')}, BEST_EVAL_ACC: 0.5516666769981384, at 2000 iters
+[2022-10-17 15:50:49,423 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+3000 次： 最好的模型准确率 tensor(0.5517, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5517, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4168, device='cuda:0')
+[2022-10-17 15:58:04,583 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5319, device='cuda:0'), 'train/unsup_loss': tensor(0.2906, device='cuda:0'), 'train/total_loss': tensor(0.8225, device='cuda:0'), 'train/mask_ratio': tensor(0.6853, device='cuda:0'), 'lr': 0.019031798524909365, 'train/prefecth_time': 0.24419334411621094, 'train/run_time': 0.17806898498535156, 'eval/top-1-acc': tensor(0.5517, device='cuda:0'), 'train/top-1-acc': tensor(0.4168, device='cuda:0'), 'eval/loss': tensor(1.4930, device='cuda:0'), 'train/loss': tensor(2.0621, device='cuda:0')}, BEST_EVAL_ACC: 0.5516666769981384, at 2000 iters
+4000 次： 最好的模型准确率 tensor(0.5517, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5520, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4215, device='cuda:0')
+[2022-10-17 16:05:15,330 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6059, device='cuda:0'), 'train/unsup_loss': tensor(0.2116, device='cuda:0'), 'train/total_loss': tensor(0.8175, device='cuda:0'), 'train/mask_ratio': tensor(0.6763, device='cuda:0'), 'lr': 0.018572818479295018, 'train/prefecth_time': 0.23669638061523438, 'train/run_time': 0.17871881103515624, 'eval/top-1-acc': tensor(0.5520, device='cuda:0'), 'train/top-1-acc': tensor(0.4215, device='cuda:0'), 'eval/loss': tensor(1.5088, device='cuda:0'), 'train/loss': tensor(2.0831, device='cuda:0')}, BEST_EVAL_ACC: 0.5519999861717224, at 4000 iters
+[2022-10-17 16:05:15,371 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+5000 次： 最好的模型准确率 tensor(0.5520, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5528, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4377, device='cuda:0')
+[2022-10-17 16:12:25,810 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4354, device='cuda:0'), 'train/unsup_loss': tensor(0.2889, device='cuda:0'), 'train/total_loss': tensor(0.7244, device='cuda:0'), 'train/mask_ratio': tensor(0.6473, device='cuda:0'), 'lr': 0.018106678258607147, 'train/prefecth_time': 0.24205305480957032, 'train/run_time': 0.17851081848144532, 'eval/top-1-acc': tensor(0.5528, device='cuda:0'), 'train/top-1-acc': tensor(0.4377, device='cuda:0'), 'eval/loss': tensor(1.5172, device='cuda:0'), 'train/loss': tensor(2.0336, device='cuda:0')}, BEST_EVAL_ACC: 0.5528333187103271, at 5000 iters
+[2022-10-17 16:12:25,854 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+6000 次： 最好的模型准确率 tensor(0.5528, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5533, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4152, device='cuda:0')
+[2022-10-17 16:19:36,658 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5054, device='cuda:0'), 'train/unsup_loss': tensor(0.3494, device='cuda:0'), 'train/total_loss': tensor(0.8548, device='cuda:0'), 'train/mask_ratio': tensor(0.6205, device='cuda:0'), 'lr': 0.017633557568774192, 'train/prefecth_time': 0.24527410888671874, 'train/run_time': 0.17821417236328124, 'eval/top-1-acc': tensor(0.5533, device='cuda:0'), 'train/top-1-acc': tensor(0.4152, device='cuda:0'), 'eval/loss': tensor(1.5218, device='cuda:0'), 'train/loss': tensor(2.1363, device='cuda:0')}, BEST_EVAL_ACC: 0.5533333420753479, at 6000 iters
+[2022-10-17 16:19:36,698 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+7000 次： 最好的模型准确率 tensor(0.5533, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5512, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4237, device='cuda:0')
+[2022-10-17 16:26:47,460 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5502, device='cuda:0'), 'train/unsup_loss': tensor(0.2541, device='cuda:0'), 'train/total_loss': tensor(0.8043, device='cuda:0'), 'train/mask_ratio': tensor(0.6808, device='cuda:0'), 'lr': 0.01715363880682837, 'train/prefecth_time': 0.22461007690429688, 'train/run_time': 0.17925814819335936, 'eval/top-1-acc': tensor(0.5512, device='cuda:0'), 'train/top-1-acc': tensor(0.4237, device='cuda:0'), 'eval/loss': tensor(1.5659, device='cuda:0'), 'train/loss': tensor(2.1206, device='cuda:0')}, BEST_EVAL_ACC: 0.5533333420753479, at 6000 iters
+[2022-10-17 16:26:47,753 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7761, device='cuda:0'), 'train/top-1-acc': tensor(0.6641, device='cuda:0'), 'eval/loss': tensor(0.8107, device='cuda:0'), 'train/loss': tensor(1.1387, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 948/948 [00:19<00:00, 47.42it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (19490, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (58505, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+............. 第 7 次迭代...............
+-==============半监督训练===========
+[2022-10-17 16:27:10,545 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 16:27:10,580 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 16:27:10,584 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 16:27:10,584 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 16:27:10,584 INFO] Check Point Loading: it is LOADED
+[2022-10-17 16:27:11,065 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.5533, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5517, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4445, device='cuda:0')
+[2022-10-17 16:34:20,725 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.7594, device='cuda:0'), 'train/unsup_loss': tensor(0.2122, device='cuda:0'), 'train/total_loss': tensor(0.9717, device='cuda:0'), 'train/mask_ratio': tensor(0.7165, device='cuda:0'), 'lr': 0.016667106990588067, 'train/prefecth_time': 0.23178973388671875, 'train/run_time': 0.1783572540283203, 'eval/top-1-acc': tensor(0.5517, device='cuda:0'), 'train/top-1-acc': tensor(0.4445, device='cuda:0'), 'eval/loss': tensor(1.5157, device='cuda:0'), 'train/loss': tensor(1.9886, device='cuda:0')}, BEST_EVAL_ACC: 0.5533333420753479, at 1 iters
+[2022-10-17 16:41:32,483 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3604, device='cuda:0'), 'train/unsup_loss': tensor(0.2594, device='cuda:0'), 'train/total_loss': tensor(0.6198, device='cuda:0'), 'train/mask_ratio': tensor(0.6719, device='cuda:0'), 'lr': 0.01617414968733001, 'train/prefecth_time': 0.22616053771972655, 'train/run_time': 0.1782130889892578, 'eval/top-1-acc': tensor(0.5530, device='cuda:0'), 'train/top-1-acc': tensor(0.4342, device='cuda:0'), 'eval/loss': tensor(1.4964, device='cuda:0'), 'train/loss': tensor(2.0767, device='cuda:0')}, BEST_EVAL_ACC: 0.5533333420753479, at 1 iters
+2000 次： 最好的模型准确率 tensor(0.5533, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5530, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4342, device='cuda:0')
+3000 次： 最好的模型准确率 tensor(0.5533, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5527, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4353, device='cuda:0')
+[2022-10-17 16:48:44,691 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3177, device='cuda:0'), 'train/unsup_loss': tensor(0.2760, device='cuda:0'), 'train/total_loss': tensor(0.5937, device='cuda:0'), 'train/mask_ratio': tensor(0.6719, device='cuda:0'), 'lr': 0.01567495694147847, 'train/prefecth_time': 0.25475053405761716, 'train/run_time': 0.18355914306640625, 'eval/top-1-acc': tensor(0.5527, device='cuda:0'), 'train/top-1-acc': tensor(0.4353, device='cuda:0'), 'eval/loss': tensor(1.5005, device='cuda:0'), 'train/loss': tensor(2.0067, device='cuda:0')}, BEST_EVAL_ACC: 0.5533333420753479, at 1 iters
+4000 次： 最好的模型准确率 tensor(0.5533, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5588, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4265, device='cuda:0')
+[2022-10-17 16:55:54,007 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4668, device='cuda:0'), 'train/unsup_loss': tensor(0.2255, device='cuda:0'), 'train/total_loss': tensor(0.6922, device='cuda:0'), 'train/mask_ratio': tensor(0.6585, device='cuda:0'), 'lr': 0.015169721201339543, 'train/prefecth_time': 0.23557638549804688, 'train/run_time': 0.17926934814453124, 'eval/top-1-acc': tensor(0.5588, device='cuda:0'), 'train/top-1-acc': tensor(0.4265, device='cuda:0'), 'eval/loss': tensor(1.4912, device='cuda:0'), 'train/loss': tensor(2.0861, device='cuda:0')}, BEST_EVAL_ACC: 0.5588333010673523, at 4000 iters
+[2022-10-17 16:55:54,045 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+5000 次： 最好的模型准确率 tensor(0.5588, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5557, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4253, device='cuda:0')
+[2022-10-17 17:03:04,015 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5657, device='cuda:0'), 'train/unsup_loss': tensor(0.2714, device='cuda:0'), 'train/total_loss': tensor(0.8370, device='cuda:0'), 'train/mask_ratio': tensor(0.6540, device='cuda:0'), 'lr': 0.014658637244908648, 'train/prefecth_time': 0.23772930908203124, 'train/run_time': 0.17744883728027344, 'eval/top-1-acc': tensor(0.5557, device='cuda:0'), 'train/top-1-acc': tensor(0.4253, device='cuda:0'), 'eval/loss': tensor(1.5176, device='cuda:0'), 'train/loss': tensor(2.0797, device='cuda:0')}, BEST_EVAL_ACC: 0.5588333010673523, at 4000 iters
+6000 次： 最好的模型准确率 tensor(0.5588, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5605, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4252, device='cuda:0')
+[2022-10-17 17:10:19,811 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4249, device='cuda:0'), 'train/unsup_loss': tensor(0.3448, device='cuda:0'), 'train/total_loss': tensor(0.7697, device='cuda:0'), 'train/mask_ratio': tensor(0.6540, device='cuda:0'), 'lr': 0.014141902104779934, 'train/prefecth_time': 0.2414271697998047, 'train/run_time': 0.18034291076660156, 'eval/top-1-acc': tensor(0.5605, device='cuda:0'), 'train/top-1-acc': tensor(0.4252, device='cuda:0'), 'eval/loss': tensor(1.5192, device='cuda:0'), 'train/loss': tensor(2.1169, device='cuda:0')}, BEST_EVAL_ACC: 0.5604999661445618, at 6000 iters
+[2022-10-17 17:10:19,859 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 17:17:32,368 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2606, device='cuda:0'), 'train/unsup_loss': tensor(0.3537, device='cuda:0'), 'train/total_loss': tensor(0.6143, device='cuda:0'), 'train/mask_ratio': tensor(0.6652, device='cuda:0'), 'lr': 0.013619714992186404, 'train/prefecth_time': 0.2566401672363281, 'train/run_time': 0.17887391662597657, 'eval/top-1-acc': tensor(0.5597, device='cuda:0'), 'train/top-1-acc': tensor(0.4195, device='cuda:0'), 'eval/loss': tensor(1.5400, device='cuda:0'), 'train/loss': tensor(2.1607, device='cuda:0')}, BEST_EVAL_ACC: 0.5604999661445618, at 6000 iters
+7000 次： 最好的模型准确率 tensor(0.5605, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5597, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4195, device='cuda:0')
+[2022-10-17 17:17:32,665 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7824, device='cuda:0'), 'train/top-1-acc': tensor(0.6645, device='cuda:0'), 'eval/loss': tensor(0.7948, device='cuda:0'), 'train/loss': tensor(1.1602, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 915/915 [00:19<00:00, 46.98it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (21656, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (56339, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+............. 第 8 次迭代...............
+-==============半监督训练===========
+[2022-10-17 17:17:54,996 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 17:17:55,033 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 17:17:55,037 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 17:17:55,037 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 17:17:55,037 INFO] Check Point Loading: it is LOADED
+[2022-10-17 17:17:55,510 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 17:25:09,503 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4405, device='cuda:0'), 'train/unsup_loss': tensor(0.2060, device='cuda:0'), 'train/total_loss': tensor(0.6466, device='cuda:0'), 'train/mask_ratio': tensor(0.6451, device='cuda:0'), 'lr': 0.013092277220200265, 'train/prefecth_time': 0.26256036376953124, 'train/run_time': 0.17922988891601563, 'eval/top-1-acc': tensor(0.5623, device='cuda:0'), 'train/top-1-acc': tensor(0.4412, device='cuda:0'), 'eval/loss': tensor(1.4850, device='cuda:0'), 'train/loss': tensor(2.0196, device='cuda:0')}, BEST_EVAL_ACC: 0.562333345413208, at 1000 iters
+1000 次： 最好的模型准确率 tensor(0.5605, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5623, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4412, device='cuda:0')
+[2022-10-17 17:25:09,550 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+[2022-10-17 17:32:25,534 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4941, device='cuda:0'), 'train/unsup_loss': tensor(0.2551, device='cuda:0'), 'train/total_loss': tensor(0.7492, device='cuda:0'), 'train/mask_ratio': tensor(0.6473, device='cuda:0'), 'lr': 0.012559792126122843, 'train/prefecth_time': 0.2525947570800781, 'train/run_time': 0.18008502197265625, 'eval/top-1-acc': tensor(0.5648, device='cuda:0'), 'train/top-1-acc': tensor(0.4297, device='cuda:0'), 'eval/loss': tensor(1.4844, device='cuda:0'), 'train/loss': tensor(2.1397, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+2000 次： 最好的模型准确率 tensor(0.5623, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5648, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4297, device='cuda:0')
+[2022-10-17 17:32:25,583 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+3000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5628, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4390, device='cuda:0')
+[2022-10-17 17:39:42,222 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6550, device='cuda:0'), 'train/unsup_loss': tensor(0.2343, device='cuda:0'), 'train/total_loss': tensor(0.8893, device='cuda:0'), 'train/mask_ratio': tensor(0.6696, device='cuda:0'), 'lr': 0.012022464993094227, 'train/prefecth_time': 0.244676025390625, 'train/run_time': 0.1789524230957031, 'eval/top-1-acc': tensor(0.5628, device='cuda:0'), 'train/top-1-acc': tensor(0.4390, device='cuda:0'), 'eval/loss': tensor(1.5000, device='cuda:0'), 'train/loss': tensor(2.0646, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+4000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5637, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4238, device='cuda:0')
+[2022-10-17 17:46:53,911 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.5853, device='cuda:0'), 'train/unsup_loss': tensor(0.2624, device='cuda:0'), 'train/total_loss': tensor(0.8478, device='cuda:0'), 'train/mask_ratio': tensor(0.6607, device='cuda:0'), 'lr': 0.011480502970952695, 'train/prefecth_time': 0.24390357971191406, 'train/run_time': 0.1783732147216797, 'eval/top-1-acc': tensor(0.5637, device='cuda:0'), 'train/top-1-acc': tensor(0.4238, device='cuda:0'), 'eval/loss': tensor(1.5136, device='cuda:0'), 'train/loss': tensor(2.1341, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+5000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5642, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4360, device='cuda:0')
+[2022-10-17 17:54:09,258 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2697, device='cuda:0'), 'train/unsup_loss': tensor(0.2100, device='cuda:0'), 'train/total_loss': tensor(0.4797, device='cuda:0'), 'train/mask_ratio': tensor(0.6696, device='cuda:0'), 'lr': 0.010934114996374488, 'train/prefecth_time': 0.23126832580566406, 'train/run_time': 0.17913600158691406, 'eval/top-1-acc': tensor(0.5642, device='cuda:0'), 'train/top-1-acc': tensor(0.4360, device='cuda:0'), 'eval/loss': tensor(1.5275, device='cuda:0'), 'train/loss': tensor(2.0854, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+6000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5617, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4247, device='cuda:0')
+[2022-10-17 18:01:21,018 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2768, device='cuda:0'), 'train/unsup_loss': tensor(0.2680, device='cuda:0'), 'train/total_loss': tensor(0.5448, device='cuda:0'), 'train/mask_ratio': tensor(0.6429, device='cuda:0'), 'lr': 0.010383511712324791, 'train/prefecth_time': 0.22027110290527344, 'train/run_time': 0.17799388122558593, 'eval/top-1-acc': tensor(0.5617, device='cuda:0'), 'train/top-1-acc': tensor(0.4247, device='cuda:0'), 'eval/loss': tensor(1.5492, device='cuda:0'), 'train/loss': tensor(2.1895, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+[2022-10-17 18:08:32,089 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3165, device='cuda:0'), 'train/unsup_loss': tensor(0.3320, device='cuda:0'), 'train/total_loss': tensor(0.6484, device='cuda:0'), 'train/mask_ratio': tensor(0.6094, device='cuda:0'), 'lr': 0.009828905386850802, 'train/prefecth_time': 0.25038748168945313, 'train/run_time': 0.17978115844726564, 'eval/top-1-acc': tensor(0.5595, device='cuda:0'), 'train/top-1-acc': tensor(0.4438, device='cuda:0'), 'eval/loss': tensor(1.5765, device='cuda:0'), 'train/loss': tensor(2.1055, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 2000 iters
+7000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5595, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4438, device='cuda:0')
+[2022-10-17 18:08:32,410 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7872, device='cuda:0'), 'train/top-1-acc': tensor(0.6669, device='cuda:0'), 'eval/loss': tensor(0.8161, device='cuda:0'), 'train/loss': tensor(1.2192, device='cuda:0')}
+--------------主动学习筛选数据------------
+100%|██████████| 881/881 [00:18<00:00, 47.43it/s]
+################ i need succeed ##########################
+现有标签数据： <class 'numpy.ndarray'> (23822, 32, 32, 3)
+现无标签数据： <class 'numpy.ndarray'> (54173, 32, 32, 3)
+-------------有标签数据进行增强ing------------
+-------------无标签数据进行增强ing------------
+............. 第 9 次迭代...............
+-==============半监督训练===========
+[2022-10-17 18:08:53,877 INFO] [!] data loader keys: dict_keys(['train_lb', 'train_ulb', 'eval', 'eval_cifar10'])
+[2022-10-17 18:08:53,914 INFO] Check Point Loading: train_model is LOADED
+[2022-10-17 18:08:53,918 INFO] Check Point Loading: optimizer is LOADED
+[2022-10-17 18:08:53,919 INFO] Check Point Loading: scheduler is LOADED
+[2022-10-17 18:08:53,919 INFO] Check Point Loading: it is LOADED
+[2022-10-17 18:08:54,380 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+1000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5605, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4497, device='cuda:0')
+[2022-10-17 18:16:02,515 INFO] 1000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.6880, device='cuda:0'), 'train/unsup_loss': tensor(0.2754, device='cuda:0'), 'train/total_loss': tensor(0.9633, device='cuda:0'), 'train/mask_ratio': tensor(0.6295, device='cuda:0'), 'lr': 0.009270509831248424, 'train/prefecth_time': 0.22787295532226562, 'train/run_time': 0.17907200622558594, 'eval/top-1-acc': tensor(0.5605, device='cuda:0'), 'train/top-1-acc': tensor(0.4497, device='cuda:0'), 'eval/loss': tensor(1.5369, device='cuda:0'), 'train/loss': tensor(2.0340, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 1 iters
+[2022-10-17 18:23:11,013 INFO] 2000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4242, device='cuda:0'), 'train/unsup_loss': tensor(0.3444, device='cuda:0'), 'train/total_loss': tensor(0.7686, device='cuda:0'), 'train/mask_ratio': tensor(0.5826, device='cuda:0'), 'lr': 0.00870854031763387, 'train/prefecth_time': 0.22798512268066407, 'train/run_time': 0.17966957092285157, 'eval/top-1-acc': tensor(0.5635, device='cuda:0'), 'train/top-1-acc': tensor(0.4515, device='cuda:0'), 'eval/loss': tensor(1.5177, device='cuda:0'), 'train/loss': tensor(2.0445, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 1 iters
+2000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5635, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4515, device='cuda:0')
+[2022-10-17 18:30:20,460 INFO] 3000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2329, device='cuda:0'), 'train/unsup_loss': tensor(0.3206, device='cuda:0'), 'train/total_loss': tensor(0.5535, device='cuda:0'), 'train/mask_ratio': tensor(0.5915, device='cuda:0'), 'lr': 0.008143213495952229, 'train/prefecth_time': 0.23551315307617188, 'train/run_time': 0.18012355041503905, 'eval/top-1-acc': tensor(0.5630, device='cuda:0'), 'train/top-1-acc': tensor(0.4557, device='cuda:0'), 'eval/loss': tensor(1.5311, device='cuda:0'), 'train/loss': tensor(2.0733, device='cuda:0')}, BEST_EVAL_ACC: 0.5648333430290222, at 1 iters
+3000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5630, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4557, device='cuda:0')
+4000 次： 最好的模型准确率 tensor(0.5648, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5667, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4490, device='cuda:0')
+[2022-10-17 18:37:30,865 INFO] 4000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.4896, device='cuda:0'), 'train/unsup_loss': tensor(0.3291, device='cuda:0'), 'train/total_loss': tensor(0.8187, device='cuda:0'), 'train/mask_ratio': tensor(0.6004, device='cuda:0'), 'lr': 0.007574747310454736, 'train/prefecth_time': 0.23696646118164064, 'train/run_time': 0.17848182678222657, 'eval/top-1-acc': tensor(0.5667, device='cuda:0'), 'train/top-1-acc': tensor(0.4490, device='cuda:0'), 'eval/loss': tensor(1.5431, device='cuda:0'), 'train/loss': tensor(2.1006, device='cuda:0')}, BEST_EVAL_ACC: 0.5666666626930237, at 4000 iters
+[2022-10-17 18:37:30,913 INFO] model saved: ./saved_models\cifar10-40\model_best.pth
+5000 次： 最好的模型准确率 tensor(0.5667, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5617, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4450, device='cuda:0')
+[2022-10-17 18:44:40,107 INFO] 5000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.3955, device='cuda:0'), 'train/unsup_loss': tensor(0.3632, device='cuda:0'), 'train/total_loss': tensor(0.7586, device='cuda:0'), 'train/mask_ratio': tensor(0.5759, device='cuda:0'), 'lr': 0.007003360915677164, 'train/prefecth_time': 0.23002735900878907, 'train/run_time': 0.17783512878417967, 'eval/top-1-acc': tensor(0.5617, device='cuda:0'), 'train/top-1-acc': tensor(0.4450, device='cuda:0'), 'eval/loss': tensor(1.5536, device='cuda:0'), 'train/loss': tensor(2.1410, device='cuda:0')}, BEST_EVAL_ACC: 0.5666666626930237, at 4000 iters
+6000 次： 最好的模型准确率 tensor(0.5667, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5645, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4310, device='cuda:0')
+[2022-10-17 18:51:49,652 INFO] 6000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2217, device='cuda:0'), 'train/unsup_loss': tensor(0.3443, device='cuda:0'), 'train/total_loss': tensor(0.5660, device='cuda:0'), 'train/mask_ratio': tensor(0.5781, device='cuda:0'), 'lr': 0.00642927459195152, 'train/prefecth_time': 0.2446367950439453, 'train/run_time': 0.18043443298339842, 'eval/top-1-acc': tensor(0.5645, device='cuda:0'), 'train/top-1-acc': tensor(0.4310, device='cuda:0'), 'eval/loss': tensor(1.5639, device='cuda:0'), 'train/loss': tensor(2.1935, device='cuda:0')}, BEST_EVAL_ACC: 0.5666666626930237, at 4000 iters
+7000 次： 最好的模型准确率 tensor(0.5667, device='cuda:0') 当前eval_model在验证集上的准确率 tensor(0.5637, device='cuda:0') 当前train_model在验证集上的准确率 tensor(0.4353, device='cuda:0')
+[2022-10-17 18:59:01,011 INFO] 7000 iteration, USE_EMA: True, {'train/sup_loss': tensor(0.2576, device='cuda:0'), 'train/unsup_loss': tensor(0.3831, device='cuda:0'), 'train/total_loss': tensor(0.6407, device='cuda:0'), 'train/mask_ratio': tensor(0.5714, device='cuda:0'), 'lr': 0.00585270966048385, 'train/prefecth_time': 0.2451060791015625, 'train/run_time': 0.18053724670410157, 'eval/top-1-acc': tensor(0.5637, device='cuda:0'), 'train/top-1-acc': tensor(0.4353, device='cuda:0'), 'eval/loss': tensor(1.6052, device='cuda:0'), 'train/loss': tensor(2.2073, device='cuda:0')}, BEST_EVAL_ACC: 0.5666666626930237, at 4000 iters
+[2022-10-17 18:59:01,328 INFO] last_model saved: ./saved_models\cifar10-40\model_last_iter.pth
+询问1w张cifar10的测试结果： {'eval/top-1-acc': tensor(0.7888, device='cuda:0'), 'train/top-1-acc': tensor(0.6810, device='cuda:0'), 'eval/loss': tensor(0.8697, device='cuda:0'), 'train/loss': tensor(1.1817, device='cuda:0')}
+[2022-10-17 18:59:02,971 INFO] model saved: ./saved_models\cifar10-40\latest_model.pth
+WARNING:root:GPU 0 training is FINISHED
+
+Process finished with exit code 0
