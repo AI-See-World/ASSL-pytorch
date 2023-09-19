@@ -32,8 +32,9 @@ python train.py
 ```
 
 ## Resule
-![](https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png)
-![](https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png)
+<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png" width="210px">
+<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png" width="210px">
+
 
 ## Evaluate
 To evaluate the trained model, you can use the eval.py script.
