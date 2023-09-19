@@ -22,17 +22,35 @@ You can prepare the training data set as follows：https://github.com/sau-GaoLij
 ## How to Use to Train
 To train the model, follow the steps below:
 
-- Install PyTorch by selecting your environment on the website and running the appropriate command.
-- Clone this repository.
-- Note: We currently only support Python 3+.
-- Modify the corresponding dataset location in ssl_dataset.py before training starts.
-- Download the dataset by following the instructions provided in the repository.
-- Before training the surrogate model, you must have a black-box model. In our experiment, we assume the black-box model to be a ResNet34 model trained on the CIFAR-10 dataset.
+- Clone the repository：Use Git or other version control tools to clone the repository to your local computer:
+```
+git clone <repository_url>
+```
+- Python version: Make sure your Python version is 3.x or above, as Python 3+ is currently supported.
+- Modify the dataset path: Before starting the training, please modify lines 254, 257, and 262 in the ssl_dataset.py file to match the location of your dataset on the server. This ensures that the training process can load the dataset correctly.
+- Prepare the black-box model: Before training the agent model, make sure you have prepared the black-box model. In this experiment, we assume that the black-box model is a ResNet34 model trained on the CIFAR-10 dataset. Please note that when saving the black-box model, save it in the form of a complete model + parameters. If only the model is saved, you will need to provide the network structure parameters when loading the black-box model to load it correctly. The code to load the black-box model is located at line 45 of the ssl_dataset.py file. Make sure to provide the correct network structure parameters when loading the black-box model.
+- Important hyperparameter settings: In the main function of the train.py file, you can set the following important hyperparameters to fit your server and training requirements:
+- save_dir (save directory): Specify the directory where the model will be saved. The default is ./saved_models.
+```
+--save_name : Specify the filename of the saved model. The default is cifar10-40.
 
-Run the following command to start the training:
+--resume : If set to True, resume training from the previous training session. The default is False.
+
+--load_path : Specify the path of the pretrained model to load. The default is None.
+
+--overwrite : If set to True, overwrite the existing model with the same name when saving the model. The default is True.
+
+--epoch : Specify the total number of training epochs. The default is 10.
+
+--num_train_iter : Specify the total number of training iterations (equal to epoch multiplied by every_num_train_iter).
+
+--every_num_train_iter : Specify the number of training iterations per epoch.
 ```
-python train.py 
+ Now, you can run the following command to start the training process. Make sure you are in the root directory of the repository and execute the following command in the command line or terminal:
 ```
+python train.py
+```
+
 
 ## Result
 <img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png" width="310px"><img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png" width="310px">
