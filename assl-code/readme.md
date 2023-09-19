@@ -1,9 +1,8 @@
-
-# assl-code
+# ASSL-pytorch
 This repository contains an implementation of ASSL in PyTorch, which can reproduce the results for CIFAR10 and Caltech256 datasets as reported in the paper.
 
 The paper proposes the ASSL (Adversarial Sample Synthesis and Labeling) framework to address the problem of stealing black-box models when only input data and hard-label outputs are available. The framework utilizes a large pool of unlabeled samples to train a substitute model that accurately simulates the target black-box model. Experimental results demonstrate that the proposed method outperforms state-of-the-art techniques by 3.73% to 16.94% when faced with hard-label outputs.
-![](assl\famework.png)
+![](https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/famework.png)
 
 ## Requirements
 - python 3.6
@@ -26,12 +25,15 @@ To train the model, follow the steps below:
 - Note: We currently only support Python 3+.
 - Modify the corresponding dataset location in ssl_dataset.py before training starts.
 - Download the dataset by following the instructions provided in the repository.
-- Before training the surrogate model, you must have a black-box model. In our experiment, we assume the black-box model to be a ResNet34 model trained on the CIFAR-10 dataset.
 
 Run the following command to start the training:
 ```
 python train.py 
 ```
+
+## Resule
+<img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table1.png" width="310px"><img src="https://github.com/sau-GaoLijun/ASSL-pytorch/blob/main/assl-code/assl/table2.png" width="310px">
+
 
 
 ## Evaluate
